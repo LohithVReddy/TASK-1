@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Application Security Testing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .alert {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .comment-section {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Application Security Testing</h1>
+
+        <!-- SQL Injection Demo -->
+        <h2>SQL Injection Login</h2>
+        <div id="sqlResult" class="alert"></div>
+        <input type="text" id="sqlUsername" placeholder="Username">
+        <input type="password" id="sqlPassword" placeholder="Password">
+        <button onclick="sqlLogin()">Login</button>
+
+        <!-- XSS Demo -->
+        <div class="comment-section">
+            <h2>Comment Section (XSS Demo)</h2>
+            <textarea id="xssComment" placeholder="Leave your comment..."></textarea>
+            <button onclick="postComment()">Post Comment</button>
+            <div id="commentsList"></div>
+        </div>
+    </div>
+
+    <script>
+        // SQL Injection Simulation
+        function sqlLogin() {
+            const username = document.getElementById('sqlUsername').value;
+            const password = document.getElementById('sqlPassword').value;
+            const resultDiv = document.getElementById('sqlResult');
+
+            // Simulate a vulnerable SQL query
+            if (username.includes("'") || username.includes("--") || username.toLowerCase().includes(" or ")) {
+                resultDiv.innerHTML = '<div class="alert alert-success">Login successful! Welcome admin!</div>';
+            } else if (username === 'admin' && password === 'password') {
+                resultDiv.innerHTML = '<div class="alert alert-success">Login successful! Welcome admin!</div>';
+            } else {
+                resultDiv.innerHTML = '<div class="alert alert-danger">Login failed! Invalid username or password.</div>';
+            }
+        }
+
+        // XSS Simulation
+        function postComment() {
+            const comment = document.getElementById('xssComment').value;
+            const commentsList = document.getElementById('commentsList');
+
+            if (comment) {
+                commentsList.innerHTML = <div><strong>User:</strong> ${comment}</div> + commentsList.innerHTML;
+                document.getElementById('xssComment').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
