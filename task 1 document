@@ -1,0 +1,39 @@
+## 🎯 Objective
+To assess the security posture of the **OWASP Juice Shop** application by discovering vulnerabilities like:
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Broken Authentication
+- Cross-Site Request Forgery (CSRF)
+- Sensitive Data Exposure
+
+---
+
+## 🛠️ Tools Used
+- 🔸 OWASP Juice Shop
+- 🔸 Burp Suite (Community Edition)
+- 🔸 OWASP ZAP
+- 🔸 SQLMap
+- 🔸 Kali Linux (Optional)
+- 🔸 Google Docs (for report compilation)
+
+---
+
+## ✅ Vulnerabilities Identified
+
+| #  | Vulnerability             | OWASP Category            | Risk Level | Tool Used            |
+|----|---------------------------|---------------------------|------------|----------------------|
+| 1  | SQL Injection             | A01 – Injection            | High       | SQLMap, Burp Suite   |
+| 2  | Cross-Site Scripting      | A07 – XSS                  | Medium     | OWASP ZAP, Burp      |
+| 3  | Broken Authentication     | A02 – Broken Auth          | High       | Manual               |
+| 4  | Cross-Site Request Forgery| A05 – Broken Access Control| Medium     | Burp Suite           |
+| 5  | Sensitive Data Exposure   | A02 – Crypto Failures      | Medium     | Manual               |
+
+---
+
+## 📄 Deliverables
+
+- 📘 [Security Report (PDF)](link_to_pdf_if_uploaded)
+- 🛡️ OWASP Top 10 Mapping Checklist
+- 🧪 Tool Scan Outputs (ZAP, SQLMap, Burp Logs)
+- 📸 Screenshots of Attack Vectors
+- 🌐 [GitHub Repository](https://github.com/sachinsree47/FUTURE_CS_01)
