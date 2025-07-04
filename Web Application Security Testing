@@ -63,15 +63,11 @@
 <body>
     <div class="container">
         <h1>Web Application Security Testing</h1>
-
-        <!-- SQL Injection Demo -->
         <h2>SQL Injection Login</h2>
         <div id="sqlResult" class="alert"></div>
         <input type="text" id="sqlUsername" placeholder="Username">
         <input type="password" id="sqlPassword" placeholder="Password">
         <button onclick="sqlLogin()">Login</button>
-
-        <!-- XSS Demo -->
         <div class="comment-section">
             <h2>Comment Section (XSS Demo)</h2>
             <textarea id="xssComment" placeholder="Leave your comment..."></textarea>
@@ -79,15 +75,11 @@
             <div id="commentsList"></div>
         </div>
     </div>
-
     <script>
-        // SQL Injection Simulation
         function sqlLogin() {
             const username = document.getElementById('sqlUsername').value;
             const password = document.getElementById('sqlPassword').value;
             const resultDiv = document.getElementById('sqlResult');
-
-            // Simulate a vulnerable SQL query
             if (username.includes("'") || username.includes("--") || username.toLowerCase().includes(" or ")) {
                 resultDiv.innerHTML = '<div class="alert alert-success">Login successful! Welcome admin!</div>';
             } else if (username === 'admin' && password === 'password') {
@@ -96,8 +88,6 @@
                 resultDiv.innerHTML = '<div class="alert alert-danger">Login failed! Invalid username or password.</div>';
             }
         }
-
-        // XSS Simulation
         function postComment() {
             const comment = document.getElementById('xssComment').value;
             const commentsList = document.getElementById('commentsList');
